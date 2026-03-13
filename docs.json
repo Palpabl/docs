@@ -1,11 +1,15 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Palpabl Platform Documentation",
+  "name": "Palpabl",
   "colors": {
     "primary": "#081AA6",
     "light": "#07B6C9",
     "dark": "#155280"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "favicon": "/favicon.ico",
   "navigation": {
@@ -78,10 +82,6 @@
         ]
       }
     ],
-    "logo": {
-      "light": "/logo/light.svg",
-      "dark": "/logo/dark.svg"
-    },
     "navbar": {
       "links": [
         {
