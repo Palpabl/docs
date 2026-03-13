@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Palpabl Platform Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#081AA6",
+    "light": "#07B6C9",
+    "dark": "#155280"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": {
     "tabs": [
       {
@@ -48,75 +48,66 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Platform",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Getting Started",
             "pages": [
-              "api-reference/introduction"
+              "platform/intro",
+              "platform/sds",
+              "platform/agents"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "NMS",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "nms/intro"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Guides",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "nms/meraki-integration"
             ]
           }
         ]
       }
     ],
-    "global": {
-      "anchors": [
+    "logo": {
+      "light": "/logo/light.svg",
+      "dark": "/logo/dark.svg"
+    },
+    "navbar": {
+      "links": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "label": "Support",
+          "href": "support@palpabl.com"
         }
       ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+    },
+    "contextual": {
+      "options": [
+        "copy",
+        "view",
+        "chatgpt",
+        "claude",
+        "perplexity",
+        "mcp",
+        "cursor",
+        "vscode"
+      ]
+    },
+    "footer": {
+      "socials": {
+        "x": "https://x.com/PalpablPlatform",
+        "github": "https://github.com/Palpabl",
+        "linkedin": "https://linkedin.com/company/Palpabl"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
     }
   }
 }
