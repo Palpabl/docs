@@ -5,17 +5,29 @@ description: "Welcome to the Palpabl platform"
 
 ## What is Palpabl
 
+Palpabl is a data aggregation platform that consolidates data across multiple domains into one pane of glass. Your goal in using Palpabl should be to connect the multiple tools you use to run your business so that you can gather meaningful insights across both of them. 
 
+<div style={{display: 'flex', justifyContent: 'center', border: '1px'}}>
+```mermaid
+flowchart TB
+    A([CRM]):::source --> P
+    B([Accounting]):::source --> P
+    C([Project Management]):::source --> P
+    D([Marketing]):::source --> P
+    E([IT]):::source --> P
+    P{Palpabl}:::core --> I
+    I[[Unified Insights]]:::output
 
-## Setting up
+    classDef source fill:#6366f1,stroke:#4f46e5,color:#fff,rx:20
+    classDef core fill:#0ea5e9,stroke:#0284c7,color:#fff,font-size:16px
+    classDef output fill:#10b981,stroke:#059669,color:#fff
+```
+</div>
 
-Get your documentation site up and running in minutes.
+## Palpabl Products 
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+Currently Palpabl is in it's early development stage. Our only product that we offer for users to consume is the [Palpabl NMS](/nms/intro) (Network Management Solution). The reason we decided to start with Palpabl NMS is because as engineers our expertise already exists for network management as we have decades of experience doing it. 
+
+In the future as we branch out from one business domain to another we're more than happy to add additional products and features within those products. 
+
+Have a suggestion? We always love to hear from the community, you can submit your suggestions [here](https://palpabl.com/contact). 
