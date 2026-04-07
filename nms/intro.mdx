@@ -1,0 +1,48 @@
+---
+title: "Introduction"
+description: "The network management tool built for the modern network"
+---
+
+# Palpabl NMS as a Network Source of Truth
+
+Palpabl NMS is a modern take on the [Netbox Community](https://github.com/netbox-community) data structure. Netbox Community was originally designed to be a source of truth for IP Address Management (IPAM) and data center infrastructure management (DCIM). The goal being to power network automation by allowing your source of truth to control your network infrastructure giving your network engineers and IT staff one place to globally maintain their infrastructure. 
+
+We have adapted their approach which was built upon the Python framework Django and included elements like custom-coded plugins. Now we have rebuilt the entire platform using a modern React based frontend and a highly scalable and adaptable .NET backend. 
+
+## Data model
+
+The Netbox data model is something that is open source and we have decided to build upon rather than create our own from scratch. We find that their data model is well curated and provides a plethora of object types to provide the finest amount of detail on every network operation.
+
+To date the Palpabl NMS Data Model has:
+
+* Hierarchical regions, sites, and locations 
+* Racks, devices, and device components
+* Cables and wireless connections
+* Power distribution tracking 
+* Data circuits and providers 
+* Virtual machines and clusters 
+* IP prefixes, ranges, and addresses. 
+* VRFs and route targets 
+* FHRP groups (VRRP, HSRP, etc.)
+* AS Numbers 
+* VLANs and scoped VLAN groups 
+* L2VPN overlays 
+* Tenancy assignments
+* Contact Management
+
+## Flexible to your needs 
+
+Palpabl NMS offers several mechanisms that enable you to turn the platform into what you need to conduct your role as an IT provider. 
+
+* Custom fields
+* Export templates
+* Event rules
+* GraphQL API
+
+## As a Palpabl product
+
+The Palpabl platform serves as a key data aggregator across a multitude of business domains with Palpabl NMS being our first data aggregator. With Palpabl NMS you can consolidate all of your tools you use to manage your network into one consolidated interface with a rich data structure and strong automation tools that offer best in class AI and automation support. 
+
+## Monitor in real time
+
+Palpabl connects to your tools and monitors and updates your network and data structure automatically using Palpabl's patented [Subject Data Services](/platform/sds) structure. Perform discovery to have relevant objects added to your Palpabl NMS data structure and then monitor those pieces of data in real time with relevant subject queries that are automatically added through the discovery process. 

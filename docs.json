@@ -37,6 +37,13 @@
             ]
           },
           {
+            "group": "Data Model",
+            "pages": [
+              "nms/data/organization",
+              "nms/data/racks"
+            ]
+          },
+          {
             "group": "Guides",
             "pages": [
               "nms/meraki-integration"
