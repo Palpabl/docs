@@ -20,9 +20,14 @@
           {
             "group": "Getting Started",
             "pages": [
-              "platform/intro",
-              "platform/sds",
-              "platform/agents"
+              "platform/intro"
+            ]
+          },
+          {
+            "group": "Platform Essentials",
+            "pages": [
+              "platform/organization",
+              "platform/billing"
             ]
           }
         ]
@@ -33,7 +38,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "nms/intro"
+              "nms/intro",
+              "nms/quickstart"
             ]
           },
           {
@@ -41,12 +47,6 @@
             "pages": [
               "nms/data/organization",
               "nms/data/racks"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "nms/meraki-integration"
             ]
           }
         ]
@@ -56,7 +56,7 @@
       "links": [
         {
           "label": "Support",
-          "href": "support@palpabl.com"
+          "href": "https://palpabl.com/contact"
         }
       ]
     },
