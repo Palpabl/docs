@@ -1,0 +1,124 @@
+---
+title: "API Tokens"
+description: "Use long lived API tokens to setup collectors and read/write using the NMS API."
+---
+
+API tokens let scripts, collectors, and other services talk to Palpabl NMS on your behalf without logging in through the browser. Each token acts with **your** permissions — it can never do more than you can — and authenticates programmatic requests to the NMS API.
+
+This guide covers where to find your tokens and how to create, update, and delete them. Treat every token like a password: anyone who has it can act as you.
+
+# Where to Find API Tokens
+
+API tokens live in your personal settings inside the NMS application.
+
+1. Open Palpabl NMS (see the [quickstart](../quickstart) if you need help getting into the app).
+2. Click your user avatar and go to **Settings**.
+3. Select the **API tokens** tab.
+
+From this page you can see every token you've created, when each one expires, and the permissions (scopes) attached to it.
+
+<Note>
+Tokens are personal. The list shows only the tokens you created, and each token carries a snapshot of the permissions you held when it was created.
+</Note>
+
+For security, the full token value is **never** shown in this list. Each row displays only a short prefix and the last few characters (for example `pnms_pat_a1b2c3d4…f9g0`) so you can tell your tokens apart.
+
+# Creating a Token
+
+1. On the **API tokens** tab, click **Create token**.
+2. **Choose the permissions** the token should have. You can grant any subset of the permissions you currently hold — use **Select all** to grant everything, or pick individual scopes. A token can never be granted a permission you don't have yourself.
+3. **Set an expiry date.** Tokens default to 90 days and can be set to a maximum of one year from today. We recommend the shortest window that fits your use case.
+4. Click **Create token**.
+
+<Warning>
+The full token is shown **only once**, immediately after it's created. Copy it and store it somewhere safe (such as a secrets manager or your collector's configuration) before closing the dialog. If you lose it, you can't recover it — you'll need to delete the token and create a new one.
+</Warning>
+
+# Using a Token
+
+Send the token in the `Authorization` header of your request to the NMS API as a bearer token:
+
+```http
+Authorization: Bearer pnms_pat_a1b2c3d4e5f6...
+```
+
+For example, calling the GraphQL API with `curl`:
+
+```bash
+curl https://your-nms-host/graphql \
+  -H "Authorization: Bearer pnms_pat_a1b2c3d4e5f6..." \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ __typename }"}'
+```
+
+The request runs with the permissions attached to the token. If the token is missing a required permission, the request is rejected — grant that scope when creating the token, or edit the token to add it.
+
+<Note>
+This is the same token format used to set up collectors. Drop the token into your collector's configuration wherever an API token or bearer token is requested.
+</Note>
+
+# Updating a Token
+
+You can change a token's **permissions** or **expiry date** without re-issuing it — the token value stays the same, so services using it keep working.
+
+1. On the **API tokens** tab, click the **pencil** (edit) icon next to the token.
+2. Adjust the selected permissions and/or the expiry date.
+3. Save your changes.
+
+As with creating a token, you can only grant permissions you currently hold. If your own permissions have changed since the token was created, you'll only be able to assign scopes you still have.
+
+<Note>
+Permission and expiry changes take effect within a few minutes as the change propagates.
+</Note>
+
+# Deleting a Token
+
+Deleting a token immediately and permanently revokes it.
+
+1. On the **API tokens** tab, click the **trash** (delete) icon next to the token.
+2. Confirm the deletion.
+
+<Warning>
+Any collector, script, or service still using the token will **stop working immediately**. This can't be undone — if you delete a token by mistake, create a new one and update the services that relied on it.
+</Warning>
+
+Deleting tokens you no longer use is good hygiene — see the best practices below.
+
+# Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Treat tokens like passwords" icon="key">
+    Never commit a token to source control, paste it into a ticket, or share it in chat. Store it in a secrets manager or a protected configuration file.
+  </Card>
+  <Card title="Grant the least access needed" icon="lock">
+    Only select the permissions a service actually requires. A read-only collector doesn't need write scopes.
+  </Card>
+  <Card title="Use one token per service" icon="layer-group">
+    Give each collector, script, or integration its own token. If one is compromised, you can revoke it without disrupting the others.
+  </Card>
+  <Card title="Set short expirations and rotate" icon="rotate">
+    Prefer shorter expiry windows and replace tokens before they lapse. Rotating regularly limits the damage a leaked token can do.
+  </Card>
+  <Card title="Delete unused tokens" icon="trash">
+    Remove tokens for retired services or one-off tasks. Fewer live tokens means a smaller attack surface.
+  </Card>
+  <Card title="Rotate immediately if exposed" icon="triangle-exclamation">
+    If a token is ever leaked, delete it right away and issue a replacement. Don't wait for it to expire.
+  </Card>
+</CardGroup>
+
+# Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I lost my token right after creating it">
+    The full token can't be recovered. Delete the token from the **API tokens** tab and create a new one, then update wherever it was being used.
+  </Accordion>
+  <Accordion title="My requests are being rejected as unauthorized">
+    Confirm the token hasn't expired (check the **Expires** column) and that it carries the permissions the request needs. If a scope is missing, edit the token to add it — provided you still hold that permission yourself.
+  </Accordion>
+  <Accordion title="A service stopped working unexpectedly">
+    Check whether the token expired or was deleted, and whether your own permissions changed. Editing a token can only assign scopes you currently hold, so a change to your access can affect tokens you update.
+  </Accordion>
+</AccordionGroup>
+
+If you believe there's a technical issue, [contact support](https://palpabl.com/contact).

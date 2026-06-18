@@ -44,6 +44,12 @@
               "nms/data/organization",
               "nms/data/racks"
             ]
+          },
+          {
+            "group": "API",
+            "pages": [
+              "nms/api/api-tokens"
+            ]
           }
         ]
       }
